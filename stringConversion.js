@@ -1,29 +1,25 @@
-const msg = "1 for R3, 2 for R7, 3 for R10, 5 for R14.50.";
 
+var fruitObj = { price: {}};
 
-function Convert (message) {
+module.exports = function (message) {
 	var array = message.split(' ');
 	
-	var quantityArray = [];
-	
-	//var covertedNum = parseInt(message);
+	//var quantityArray = [];
+
+	//var covertedNum = "";
 
 	for (var i = 0; i < array.length; i++) {
-		covertedNum = parseInt(array[i]);
+		if (array[i].startsWith('R')) {
+			price = array[i];
+			if (fruitObj.price[price] === undefined) {
+				fruitObj.price[price] = 0;
+			}
+			
+			fruitObj.price[price] =+ 1;
+		};
 		
-		if (typeof(covertedNum) !== NaN) {
-			quantityArray.push(covertedNum);
-		}
-}
-	
-	for (var x = 0; x < quantityArray.length; x++) {
-		if (quantityArray[x].contains(NaN)) {
-			quantityArray[x].splice();
-		}
 	}
+		return fruitObj;
 	
-	console.log(quantityArray);
-};
-
-
-Convert(msg);
+	//console.log(quantityArray);
+}
